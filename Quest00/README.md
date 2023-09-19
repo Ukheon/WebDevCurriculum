@@ -51,18 +51,17 @@
 -   **git config** : 전역또는 폴더별 사용자 정보, 커밋 메시지 편집기, 병합 동작등을 설정하는데 사용됩니다.
     -   —global user.name or user.email <User name or email> : 사용자를 정의하면 히스토리에 입력한 사용자 이름과 이메일이 표기됩니다.
     -   —global alias.<co> checkout : 단축 명령어를 설정합니다.
+    -   —global commit.template <Filename> : 깃 commit 템플릿을 설정합니다.
+    -   —global core.editor <editor> : 깃 기본에디터를 설정합니다.
 -   **git clone** : 원격 저장소를 복제하여 로컬로 가져옵니다.
 -   **git add** : 변경된 파일을 스테이징 영역에 추가합니다. \*스테이징 영역은 커밋을 준비하는 단계로 어떤 변경사항을 포함할지 결정하는 단계
 -   **git commit** : 스테이징 영역에 있는 변경 사항을 로컬 저장소에 커밋합니다. 변경 사항을 스냅샷으로 저장하고 이록을 기록하는 역할
-
+    -   —amend : 가장 최근 commit 수정
+    -   git rebase -i HEAD~[N] : 최근 N개까지 commit 선택해서 수정
     -   **convention**
-
         > 커밋 메시지의 형식과 내용을 표준화하여 프로젝트의 히스토리를 이해하고 변경 사항을 추적하여 효과적으로 협업하기 쉽게 만드는 것입니다.
-
         ### 템플릿 규칙
-
         커밋시 Git commit.template 옵션에 설정한 템플릿 파일을 보여준다.
-
         ```jsx
         // .git_commit_template.txt
         ################
@@ -90,9 +89,7 @@
         # chore : 빌드 업무 수정, 패키지 매니저 수정
         ################
         ```
-
         템플릿 설정 : git config —global commit.template .git_commit_template.txt
-
 -   **git push** : 로컬 저장소의 변경 사항을 원격 저장소로 업로드합니다.
 -   **git pull** : 원격 저장소의 변경 사항을 로컬로 가져와 병합합니다.
     -   git merge : 다른 브랜치의 변경 사항을 현재 브랜치로 가져와 병합합니다. 로컬에서 수행되며 원격 저장소와 직접 상호작용하지 않습니다.
